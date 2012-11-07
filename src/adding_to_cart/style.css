@@ -1,0 +1,12 @@
+.item {
+	margin: 20px 0;
+}
+
+.item * {
+	margin: 0;
+}
+
+#cart-status {
+	float: right;
+	text-align: right;
+}
