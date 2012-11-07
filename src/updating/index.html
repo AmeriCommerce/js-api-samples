@@ -22,26 +22,14 @@
 			<thead>
 				<tr>
 					<th class="desc">Description</th>
-					<th class="qty">Quantity</th>
+					<th class="qty">Qty</th>
 					<th class="each">Each</th>
 					<th class="total">Total</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr id="subtotal">
-					<th colspan="3">Subtotal</th>
-					<td class="total"></td>
-				</tr>
-				<tr id="shipping">
-					<th colspan="3">Shipping</th>
-					<td class="total"></td>
-				</tr>
-				<tr id="tax">
-					<th colspan="3">Tax</th>
-					<td class="total"></td>
-				</tr>
-				<tr id="grandtotal">
-					<th colspan="3">Grand Total</th>
+					<th colspan="3" class="total-label">Subtotal</th>
 					<td class="total"></td>
 				</tr>
 			</tbody>
@@ -51,8 +39,14 @@
 
 	<script type="text/template" id="cart-row-tmpl">
 		<tr>
-			<td class="desc"></td>
-			<td class="qty"></td>
+			<td class="desc">
+				<div class="item-name"></div>
+				<div class="item-number"></div>
+				<a href="#" class="remove-item">remove</a>
+			</td>
+			<td class="qty">
+				<input type="text" class="item-qty" />
+			</td>
 			<td class="each"></td>
 			<td class="total"></td>
 		</tr>

@@ -18,7 +18,14 @@ A more advanced example where we lay out a full cart display and attach events t
 
 ### Conventions ###
 
-Generally a variable that represents a jQuery object will be prefixed with a $. This is purely a convenience that allows us to identify these objects at a glance.
+Generally a variable that represents a jQuery object will be prefixed with a $. This is purely a convenience that allows us to identify these objects at a glance. The only exception is with "private" variable names; these use an underscore (_) as a prefix.
+
+When defining a local reference to "this" to use inside of jQuery event callbacks we use "self" as the variable name.
 
 ### Version 2012.6 Compatibility ###
 
+2012.6 changes the "response.cart" property to "response.data" and standardizes on "response.data" in responses that are not cart-related in nature. As such, you will see the following assignment until 2012.6 has been deployed and is in more widespread use:
+
+    var cart = response.cart || response.data;
+
+That is, it will use cart if it is available, otherwise it will use data. This is safe to use in any version before 2012.6 as well as after.
