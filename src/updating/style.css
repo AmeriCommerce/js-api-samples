@@ -1,0 +1,57 @@
+#cart {
+	margin: 10px auto;
+	border: 1px solid #CCC;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+#cart th, #cart td {
+	padding: 5px;
+	border: 1px solid #CCC;
+}
+
+#cart thead th {
+	border-bottom-width: 3px;
+}
+
+.desc {
+	text-align: left;
+}
+
+.qty {
+	width: 75px;
+}
+
+td.qty {
+	text-align: center;
+}
+
+.each, .total {
+	width: 75px;
+}
+
+td.each, td.total {
+	text-align: right;
+}
+
+.total-label {
+	text-align: right;
+}
+
+#subtotal th, #subtotal td {
+	border-top-width: 3px;
+}
+
+.item-qty {
+	width: 50px;
+	text-align: right;
+}
+
+.item-name {
+	font-size: 17px;
+}
+
+.item-number {
+	font-size: 11px;
+}
