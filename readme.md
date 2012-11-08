@@ -18,9 +18,7 @@ A more advanced example where we lay out a full cart display and attach events t
 
 ### Conventions ###
 
-Generally a variable that represents a jQuery object will be prefixed with a $. This is purely a convenience that allows us to identify these objects at a glance. The only exception is with "private" variable names; these use an underscore (_) as a prefix.
-
-When defining a local reference to "this" to use inside of jQuery event callbacks we use "self" as the variable name.
+Generally a variable that represents a jQuery object will be prefixed with a $. This is purely a convenience that allows us to identify these objects at a glance.
 
 ### Version 2012.6 Compatibility ###
 

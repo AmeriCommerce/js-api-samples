@@ -24,9 +24,7 @@
   });
 
   AC.cart.get(function(response) {
-    // This is a workaround, there's a change in 2012.6 that changes this from cart to data.
-    // .data will be the format going forward as it is more generic and can be used for all responses.
-    var cart = response.cart || response.data;
+    var cart = response.cart || response.data; // See the readme for an explanation on why this is necessary.
     updateCartCount(cart);
   });
 
@@ -48,9 +46,7 @@
     };
 
     AC.cart.add(item, function(response) {
-      // This is a workaround, there's a change in 2012.6 that changes this from cart to data.
-      // .data will be the format going forward as it is more generic and can be used for all responses.
-      var cart = response.cart || response.data;
+      var cart = response.cart || response.data; // See the readme for an explanation on why this is necessary.
       updateCartCount(cart);
     });
   });
@@ -60,9 +56,7 @@
     e.preventDefault();
 
     AC.cart.clear(function(response) {
-      // This is a workaround, there's a change in 2012.6 that changes this from cart to data.
-      // .data will be the format going forward as it is more generic and can be used for all responses.
-      var cart = response.cart || response.data;
+      var cart = response.cart || response.data; // See the readme for an explanation on why this is necessary.
       updateCartCount(cart);
     })
   });

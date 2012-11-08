@@ -11,7 +11,7 @@
   function drawCart(cart) {
     var i, len, item,
         $row, $rowEach, $rowTotal,
-        $itemName, $itemNumber, $qtyField, $removeLink;
+        $itemName, $itemNumber, $qtyField;
 
     $subtotalRow.prevAll("tr").remove();
 
@@ -24,14 +24,13 @@
       $qtyField = $row.find(".item-qty");
       $rowEach = $row.find(".each");
       $rowTotal = $row.find(".total");
-      $removeLink = $row.find(".remove-item");
 
       $itemName.html(item.itemName);
       $itemNumber.html(item.itemNumber);
       $qtyField.val(item.quantity);
       $rowEach.html(item.price.toFixed(2));
       $rowTotal.html((item.price * item.quantity).toFixed(2));
-      $removeLink.data("cart-row-id", item.cartRowId);
+      $row.data("cart-row-id", item.cartRowId);
 
       $row.prependTo($cartBody);
     }
@@ -42,15 +41,39 @@
   }
 
   function bindEvents() {
-    var removeLinks = $(".remove-item");
+    var $removeLinks = $(".remove-item"),
+        $qtyFields = $(".item-qty"),
+        $clearCart = $("#clear-cart");
 
-    removeLinks.unbind(".removeItem").bind("click.removeItem", function(e) {
+    $removeLinks.unbind(".removeItem").bind("click.removeItem", function(e) {
       var $link = $(this),
-          cartRowId = $link.data("cart-row-id");
+          cartRowId = $link.parents("tr").data("cart-row-id");
 
       e.preventDefault();
 
       AC.cart.remove(cartRowId, function(response) {
+        var cart = response.cart || response.data; // See the readme for an explanation on why this is necessary.
+        drawCart(cart);
+      });
+    });
+
+    $qtyFields.unbind(".updateTotals").bind("change.updateTotals", function(e) {
+      var $qtyField = $(this),
+          cartRowId = $qtyField.parents("tr").data("cart-row-id");
+
+      AC.cart.update({
+        cartRowId: cartRowId,
+        quantity: parseInt($qtyField.val())
+      }, function(response) {
+        var cart = response.cart || response.data;
+        drawCart(cart);
+      });
+    });
+
+    $clearCart.unbind(".clearCart").bind("click.clearCart", function(e) {
+      e.preventDefault();
+
+      AC.cart.clear(function(response) {
         var cart = response.cart || response.data;
         drawCart(cart);
       });
@@ -84,6 +107,17 @@
     AC.cart.add({
       itemId: 24,
       quantity: 1
+    }, function() {
+      task.done(true); // After the item has been added, signal that this task is done.
+    });
+  });
+
+  batch.add(function() {
+    var task = this; // IMPORTANT: we have to flag this task as done below.
+
+    AC.cart.add({
+      itemId: 21,
+      quantity: 4
     }, function() {
       task.done(true); // After the item has been added, signal that this task is done.
     });
