@@ -14,6 +14,10 @@ This example explores a basic use case of adding an item to the cart, displaying
 
 A more advanced example where we lay out a full cart display and attach events to update quantities and remove items from the cart.
 
+### embed tools ###
+
+Code snippets pulled from the 2012.6 Embed Tools feature.
+
 ## Notes ##
 
 ### Conventions ###
