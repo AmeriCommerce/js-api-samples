@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>Items in Cart Sample</title>
+</head>
+<body>
+	<!-- this can be anywhere on the page -->
+	<span id="item_count"></span>
+
+	<!-- this should be as close to the closing </body> tag as possible -->
+	<script type="text/javascript">
+
+	  window.acOnReady = function() {
+	    AC.init({ storeDomain: "localhost" });
+
+	    AC.cart.get(function(response) {
+	      if (response.data) {
+	        var c = response.data, itemCount = document.getElementById("item_count");
+	        itemCount.innerHTML = c.totalItemCount == 1 ? "1 item" : c.totalItemCount + " items";
+	      }
+	    });
+	  };
+
+
+	// ==== BEGIN AC SYSTEM CODE ====
+	(function(a){var d,c,b;a.acReadyEvents=a.acReadyEvents||[];if(a.acOnReady){d=a.acOnReady;a.acReadyEvents.push(d);a.acOnReady=undefined}if(a.postScriptLoad){a.postScriptLoad();return}a.jqReady=false;a.acReady=false;a.loadScript=function(e,i){var g,h=a.document,f=h.getElementsByTagName("head")[0];g=h.createElement("script");g.async=true;g.src=e;if(i){g.onload=i;g.onreadystatechange=function(){if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){i();g.onload=g.onreadystatechange=null;f.removeChild(g)}}}f.appendChild(g)};a.postScriptLoad=function(){if(!a.jqReady||!a.acReady){setTimeout(a.postScriptLoad,60);return}while(a.acReadyEvents.length>0){var e=a.acReadyEvents.pop();e()}};c=a.jQuery;if(c){a.jqReady=true}else{a.loadScript("https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js",function(){a.jqReady=true})}b=a.AC;if(b){a.acReady=true}else{a.loadScript("../../lib/ac-client-api.min.js",function(){a.acReady=true})}a.postScriptLoad()}(window));
+	// ==== END AC SYSTEM CODE ====  
+	</script>
+</body>
+</html>
