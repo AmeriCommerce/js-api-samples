@@ -33,16 +33,23 @@
     var $item = $(this).parent(),
         itemName = $item.find(".item-name").html(),
         itemNumber = $item.find(".item-number").val(),
-        price = parseFloat($item.find(".price").html()),
+        price = $item.find(".price").html(),
+        cartItemType = $item.find(".cart-item-type").val(),
+        specialItemData = $item.find(".special-item-data").val(),
+        isHidden = $item.find(".is-hidden").val() == "true",
         item;
 
+    price = (typeof price === 'undefined') ? 0 : parseFloat(price.replace("$", ""));
     e.preventDefault();
 
     item = {
       itemName: itemName,
       itemNumber: itemNumber,
       price: price,
-      quantity: 1
+      quantity: 1,
+      cartItemType: cartItemType,
+      specialItemData: specialItemData,
+      isHidden: isHidden
     };
 
     AC.cart.add(item, function(response) {
