@@ -1,0 +1,12 @@
+.item {
+	margin: 20px 0;
+}
+
+.item * {
+	margin: 0;
+}
+
+.cart-container {
+	margin-top:20px;
+	margin-bottom: 20px;
+}
