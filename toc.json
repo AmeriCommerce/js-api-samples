@@ -4,6 +4,11 @@
       "type": "item",
       "title": "AmeriCommerce Client API Samples",
       "uri": "docs/readme.md"
+    },
+    {
+      "type": "item",
+      "title": "AmeriCommerce Client API Samples",
+      "uri": "docs/lib/ac-client-api.js"
     }
   ]
 }
