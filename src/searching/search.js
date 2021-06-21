@@ -26,11 +26,13 @@
 		var $itemDiv = $("<div class='item'></div>");
 		var $itemName = $("<h4 class='item-name'></h4>");
 		var $itemNumber = $("<p class='item-number'></p>");
+		var $productStatus = $("<p class='product-status'></p>");
 		var $price = $("<p class='price'></p>");
 		var $addToCart = $("<a href='#' class='add-to-cart'>Add To Cart</a>");
 		
 		$itemName.append(product.itemName);
 		$itemNumber.append(product.itemNumber);
+		$productStatus.append(product.productStatus);
 		$price.append(product.price);		
 		$itemDiv.append($itemName).append($itemNumber).append($price).append($addToCart);
 		$searchResults.append($itemDiv);		
@@ -48,6 +50,7 @@
     var $item = $(link).parent(),
         itemName = $item.find(".item-name").html(),
         itemNumber = $item.find(".item-number").val(),
+	productStatus = $item.find(".product-status").val(),
         price = $item.find(".price").html(),        
         item;
 
@@ -57,6 +60,7 @@
     item = {
       itemName: itemName,
       itemNumber: itemNumber,
+      productStatus: productStatus,
       price: price,
       quantity: 1
     };
