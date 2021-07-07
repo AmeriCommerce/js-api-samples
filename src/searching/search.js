@@ -7,6 +7,7 @@
   var $cartCount = $("#cart-count"),      
       $clearCart = $("#clear-cart"),
       $searchTerm = $(".search-term"),
+      $categoryID = $(".category-id"),
       $search = $(".search"),
       $searchResults = $(".container");
 	  
@@ -92,6 +93,7 @@
 	SubscriptionProductsOnly:false,
 	AllowVariants:true,
 	ShowHidden:false,
+	CategoryId: $categoryID.val()
 	//CustomerTypeId: 1,
 	//KeepInfoOnlyParentProducts:false
     };
